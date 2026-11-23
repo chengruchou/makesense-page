@@ -1,0 +1,131 @@
+{
+ "note": "one clip per sensor subset of the page's MM-Fi tab clip (mmfi_3d): same recording (E04/S31/A02 frames 1-100), camera path and timing",
+ "width": 1280,
+ "height": 720,
+ "clips": {
+  "rgb+depth+mmwave+lidar+wifi": {
+   "src": "media/subsets/rgb-depth-mmwave-lidar-wifi.mp4",
+   "poster": "media/subsets/rgb-depth-mmwave-lidar-wifi.webp"
+  },
+  "depth+mmwave+lidar+wifi": {
+   "src": "media/subsets/depth-mmwave-lidar-wifi.mp4",
+   "poster": "media/subsets/depth-mmwave-lidar-wifi.webp"
+  },
+  "rgb+depth+lidar+wifi": {
+   "src": "media/subsets/rgb-depth-lidar-wifi.mp4",
+   "poster": "media/subsets/rgb-depth-lidar-wifi.webp"
+  },
+  "rgb+depth+mmwave+lidar": {
+   "src": "media/subsets/rgb-depth-mmwave-lidar.mp4",
+   "poster": "media/subsets/rgb-depth-mmwave-lidar.webp"
+  },
+  "rgb+depth+mmwave+wifi": {
+   "src": "media/subsets/rgb-depth-mmwave-wifi.mp4",
+   "poster": "media/subsets/rgb-depth-mmwave-wifi.webp"
+  },
+  "rgb+mmwave+lidar+wifi": {
+   "src": "media/subsets/rgb-mmwave-lidar-wifi.mp4",
+   "poster": "media/subsets/rgb-mmwave-lidar-wifi.webp"
+  },
+  "depth+lidar+wifi": {
+   "src": "media/subsets/depth-lidar-wifi.mp4",
+   "poster": "media/subsets/depth-lidar-wifi.webp"
+  },
+  "depth+mmwave+lidar": {
+   "src": "media/subsets/depth-mmwave-lidar.mp4",
+   "poster": "media/subsets/depth-mmwave-lidar.webp"
+  },
+  "depth+mmwave+wifi": {
+   "src": "media/subsets/depth-mmwave-wifi.mp4",
+   "poster": "media/subsets/depth-mmwave-wifi.webp"
+  },
+  "mmwave+lidar+wifi": {
+   "src": "media/subsets/mmwave-lidar-wifi.mp4",
+   "poster": "media/subsets/mmwave-lidar-wifi.webp"
+  },
+  "rgb+depth+lidar": {
+   "src": "media/subsets/rgb-depth-lidar.mp4",
+   "poster": "media/subsets/rgb-depth-lidar.webp"
+  },
+  "rgb+depth+mmwave": {
+   "src": "media/subsets/rgb-depth-mmwave.mp4",
+   "poster": "media/subsets/rgb-depth-mmwave.webp"
+  },
+  "rgb+depth+wifi": {
+   "src": "media/subsets/rgb-depth-wifi.mp4",
+   "poster": "media/subsets/rgb-depth-wifi.webp"
+  },
+  "rgb+lidar+wifi": {
+   "src": "media/subsets/rgb-lidar-wifi.mp4",
+   "poster": "media/subsets/rgb-lidar-wifi.webp"
+  },
+  "rgb+mmwave+lidar": {
+   "src": "media/subsets/rgb-mmwave-lidar.mp4",
+   "poster": "media/subsets/rgb-mmwave-lidar.webp"
+  },
+  "rgb+mmwave+wifi": {
+   "src": "media/subsets/rgb-mmwave-wifi.mp4",
+   "poster": "media/subsets/rgb-mmwave-wifi.webp"
+  },
+  "depth+lidar": {
+   "src": "media/subsets/depth-lidar.mp4",
+   "poster": "media/subsets/depth-lidar.webp"
+  },
+  "depth+mmwave": {
+   "src": "media/subsets/depth-mmwave.mp4",
+   "poster": "media/subsets/depth-mmwave.webp"
+  },
+  "depth+wifi": {
+   "src": "media/subsets/depth-wifi.mp4",
+   "poster": "media/subsets/depth-wifi.webp"
+  },
+  "lidar+wifi": {
+   "src": "media/subsets/lidar-wifi.mp4",
+   "poster": "media/subsets/lidar-wifi.webp"
+  },
+  "mmwave+lidar": {
+   "src": "media/subsets/mmwave-lidar.mp4",
+   "poster": "media/subsets/mmwave-lidar.webp"
+  },
+  "mmwave+wifi": {
+   "src": "media/subsets/mmwave-wifi.mp4",
+   "poster": "media/subsets/mmwave-wifi.webp"
+  },
+  "rgb+depth": {
+   "src": "media/subsets/rgb-depth.mp4",
+   "poster": "media/subsets/rgb-depth.webp"
+  },
+  "rgb+lidar": {
+   "src": "media/subsets/rgb-lidar.mp4",
+   "poster": "media/subsets/rgb-lidar.webp"
+  },
+  "rgb+mmwave": {
+   "src": "media/subsets/rgb-mmwave.mp4",
+   "poster": "media/subsets/rgb-mmwave.webp"
+  },
+  "rgb+wifi": {
+   "src": "media/subsets/rgb-wifi.mp4",
+   "poster": "media/subsets/rgb-wifi.webp"
+  },
+  "depth": {
+   "src": "media/subsets/depth.mp4",
+   "poster": "media/subsets/depth.webp"
+  },
+  "lidar": {
+   "src": "media/subsets/lidar.mp4",
+   "poster": "media/subsets/lidar.webp"
+  },
+  "mmwave": {
+   "src": "media/subsets/mmwave.mp4",
+   "poster": "media/subsets/mmwave.webp"
+  },
+  "rgb": {
+   "src": "media/subsets/rgb.mp4",
+   "poster": "media/subsets/rgb.webp"
+  },
+  "wifi": {
+   "src": "media/subsets/wifi.mp4",
+   "poster": "media/subsets/wifi.webp"
+  }
+ }
+}

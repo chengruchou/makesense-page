@@ -1,0 +1,100 @@
+---
+// Sticky one-line nav. The current section is found with IntersectionObserver (no scroll listener).
+import SensorDots from "./SensorDots.astro";
+
+interface Props {
+  items: { id: string; label: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<span class="nav-sentinel" data-nav-sentinel aria-hidden="true"></span>
+<nav class="site-nav" aria-label="Sections" data-site-nav>
+  <div class="wrap nav-inner">
+    <a class="nav-brand" href="#top">
+      <SensorDots />
+      <span class="nav-brand-name" translate="no">MakeSense</span>
+    </a>
+    <ul class="nav-links" data-nav-list>
+      {
+        items.map((item) => (
+          <li>
+            <a href={`#${item.id}`} data-section={item.id}>
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>
+
+<script>
+  // The current section is the one under a reading line 40-45 % down the viewport. A second observer, on a
+  // sentinel at the top of the page, gives the nav its background once the page has moved.
+  const nav = document.querySelector<HTMLElement>("[data-site-nav]");
+  const list = nav?.querySelector<HTMLElement>("[data-nav-list]");
+
+  if (nav && list) {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const links = new Map<string, HTMLAnchorElement>();
+    for (const a of list.querySelectorAll<HTMLAnchorElement>("a[data-section]")) {
+      if (a.dataset.section) links.set(a.dataset.section, a);
+    }
+    const order = [...links.keys()];
+    const inBand = new Set<string>();
+    let atEnd = false;
+    let current: string | null = null;
+
+    // On narrow screens the link row scrolls sideways; keep the current link in view (the page itself does not move).
+    const reveal = (a: HTMLAnchorElement) => {
+      if (list.scrollWidth <= list.clientWidth) return;
+      const left = a.offsetLeft - (list.clientWidth - a.offsetWidth) / 2;
+      list.scrollTo({ left, behavior: reduce.matches ? "auto" : "smooth" });
+    };
+
+    const update = () => {
+      const next = order.filter((id) => inBand.has(id)).pop() ?? (atEnd ? order[order.length - 1] : undefined);
+      if ((next ?? null) === current) return;
+      if (current) links.get(current)?.removeAttribute("aria-current");
+      current = next ?? null;
+      const link = current ? links.get(current) : undefined;
+      if (link) {
+        link.setAttribute("aria-current", "true");
+        reveal(link);
+      }
+    };
+
+    const sections = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) inBand.add(entry.target.id);
+          else inBand.delete(entry.target.id);
+        }
+        update();
+      },
+      { rootMargin: "-40% 0px -55% 0px" },
+    );
+    for (const id of order) {
+      const section = document.getElementById(id);
+      if (section) sections.observe(section);
+    }
+
+    // At the very bottom the reading line can sit in the footer: the last section stays lit there.
+    const footer = document.querySelector("footer");
+    if (footer) {
+      new IntersectionObserver(([entry]) => {
+        atEnd = entry.isIntersecting;
+        update();
+      }).observe(footer);
+    }
+
+    const sentinel = document.querySelector("[data-nav-sentinel]");
+    if (sentinel) {
+      new IntersectionObserver(([entry]) => {
+        nav.toggleAttribute("data-elevated", !entry.isIntersecting);
+      }).observe(sentinel);
+    }
+  }
+</script>

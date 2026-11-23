@@ -1,0 +1,24 @@
+---
+// Lucide icons (ISC License, https://lucide.dev/license), inlined at build time from @iconify-json/lucide:
+// no icon code ships to the browser. Decorative: the control that holds an icon carries the label.
+import { icons } from "@iconify-json/lucide";
+
+interface Props {
+  name: string;
+  class?: string;
+}
+
+const { name, class: className } = Astro.props;
+const icon = icons.icons[name];
+if (!icon) throw new Error(`Unknown Lucide icon: ${name}`);
+---
+
+<svg
+  class:list={["icon", className]}
+  viewBox="0 0 24 24"
+  width="18"
+  height="18"
+  aria-hidden="true"
+  focusable="false"
+  set:html={icon.body}
+/>

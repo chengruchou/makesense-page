@@ -1,0 +1,216 @@
+---
+import Base from "../layouts/Base.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SectionHead from "../components/SectionHead.astro";
+import SensorDots from "../components/SensorDots.astro";
+import Icon from "../components/Icon.astro";
+import LoopVideo from "../components/LoopVideo.astro";
+import CopyBibtex from "../components/CopyBibtex.astro";
+import SensorPicker from "../components/SensorPicker.tsx";
+import DatasetTabs from "../components/DatasetTabs.tsx";
+import MethodStepper from "../components/MethodStepper.tsx";
+import DegradeViewer from "../components/DegradeViewer.tsx";
+import subsets from "../data/subsets.json";
+import { DATASETS } from "../data/datasets";
+import { asset } from "../lib/paths";
+
+// Prototype. Placeholders <...> are filled at release; no venue name before the decision is public.
+const title = "MakeSense: multimodal fusion for embodied vision in degraded sensing";
+const description =
+  "One fusion design for missing and degraded sensors, tested on 3D human pose, cooperative 3D detection, " +
+  "UAV localization, humanoid command prediction and few-shot pose transfer.";
+const bibtex = `@article{<key>,
+  title   = {Can Multimodal Fusion MakeSense for Embodied Vision in Degraded Sensing?},
+  author  = {<authors>},
+  journal = {arXiv preprint arXiv:<id>},
+  year    = {<year>}
+}`;
+const overview = { src: "media/overview.webp", width: 1800, height: 622 };
+
+const NAV = [
+  { id: "tldr", label: "Summary" },
+  { id: "problem", label: "Problem" },
+  { id: "method", label: "Method" },
+  { id: "try", label: "Try it" },
+  { id: "results", label: "Results" },
+  { id: "degrade", label: "Robustness" },
+  { id: "video", label: "Video" },
+  { id: "bibtex", label: "BibTeX" },
+];
+
+// The summary's numbers. Claim 1 is recounted from the 31-subset table that also feeds "Try it" (subsets where
+// MakeSense has the lowest mean MPJPE on the ID test); the build stops if the count no longer matches the text.
+type SplitRow = Record<string, [number, number]>;
+const SUBSET_TABLE = subsets.subsets as unknown as Record<string, { id: SplitRow; e04: SplitRow }>;
+const subsetRows = Object.values(SUBSET_TABLE);
+const subsetWins = subsetRows.filter((row) =>
+  subsets.models.every((m) => m === "MakeSense" || row.id[m][0] > row.id["MakeSense"][0]),
+).length;
+if (subsetWins !== 29 || subsetRows.length !== 31) {
+  throw new Error(`Summary: ${subsetWins} of ${subsetRows.length} subsets, but the claim says 29 of 31.`);
+}
+
+// Claim 2: mean MPJPE increase on MM-Fi under the four test-time faults, MakeSense against the baselines' range.
+const DEGRADE = { ours: 0.9, low: 4.1, high: 7.9 };
+const NBSP = String.fromCharCode(160); // between a number and its unit
+const increase = (v: number) => `+${v.toFixed(1)}${NBSP}%`;
+---
+
+<Base title={title} description={description}>
+  <SiteNav items={NAV} />
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <h1>Can Multimodal Fusion <span class="brand" translate="no">MakeSense</span> for Embodied Vision in Degraded Sensing?</h1>
+      <p class="authors">&lt;authors and affiliations, added at release&gt;</p>
+      <ul class="pills" aria-label="Links">
+        <li><span class="pill" aria-disabled="true"><Icon name="file-text" />Paper</span></li>
+        <li><span class="pill" aria-disabled="true"><Icon name="code-xml" />Code</span></li>
+        <li><span class="pill" aria-disabled="true"><Icon name="package" />Checkpoints</span></li>
+        <li><a class="pill" href="#video"><Icon name="circle-play" />Video</a></li>
+        <li><a class="pill" href="#bibtex"><Icon name="quote" />BibTeX</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap-wide teaser-wrap">
+      <div class="teaser">
+        <LoopVideo
+          name="teaser_2d"
+          label="Five embodied sensing datasets playing side by side: their sensor inputs, degraded inputs, and MakeSense's predictions over the ground truth for human pose on MM-Fi, cooperative detection on V2X-Real, UAV tracking on MMAUD, humanoid commands on Humanoid-Everyday and few-shot pose on RELI11D."
+        >
+          One fusion design for missing and degraded sensors.
+        </LoopVideo>
+      </div>
+    </div>
+
+    <section id="tldr" class="section is-first" aria-labelledby="tldr-title">
+      <div class="wrap">
+        <SectionHead id="tldr-title" eyebrow="TL;DR" title="Keeps working when sensors go missing or degrade" />
+        <div class="claims">
+          <div class="claim is-lead">
+            <h3 class="claim-title">Any sensor subset</h3>
+            <p class="value">{subsetWins} <span class="of">of</span> {subsetRows.length}</p>
+            <p>MM-Fi sensor subsets where MakeSense has the lowest mean error, ID test (28 of 31 in the unseen room).</p>
+          </div>
+          <div class="claim">
+            <h3 class="claim-title">Degraded sensors</h3>
+            <p class="value">{increase(DEGRADE.ours)}</p>
+            <p>Mean MPJPE increase of MakeSense under four test-time faults on MM-Fi; baselines {increase(DEGRADE.low)} to {increase(DEGRADE.high)}.</p>
+          </div>
+          <div class="claim">
+            <h3 class="claim-title">Five datasets</h3>
+            <p class="value">{DATASETS.length} <span class="of">of</span> {DATASETS.length}</p>
+            <p>MakeSense is ahead of the strongest compared baseline on each main metric.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem" class="section band" aria-labelledby="problem-title">
+      <div class="wrap">
+        <SectionHead id="problem-title" title="Adding a sensor can make the prediction worse">
+          <p class="lead">
+            Of 75 single-sensor additions on MM-Fi, 7.0 raise the error of X-Fi beyond a 95&nbsp;% bootstrap interval
+            and 1.3 that of MakeSense (mean of three runs, ID test).
+          </p>
+        </SectionHead>
+      </div>
+      <div class="wrap-wide">
+        <LoopVideo
+          name="problem_3d"
+          label="One MM-Fi frame in 3D, the paper's Fig. 2 example: X-Fi and MakeSense with three sensors (depth, LiDAR, WiFi) and with all five, each over the ground truth"
+        >
+          One example frame (the paper's Fig. 2). With RGB and mmWave added, the error of X-Fi rises and that of
+          MakeSense barely changes.
+        </LoopVideo>
+      </div>
+    </section>
+
+    <section id="method" class="section" aria-labelledby="method-title">
+      <div class="wrap">
+        <SectionHead id="method-title" title="Private streams, shared bottleneck tokens and a range readout">
+          <p class="lead">
+            Training pairs full and subset views of the same degraded input and penalizes a higher error with more
+            sensors.
+          </p>
+        </SectionHead>
+      </div>
+      <div class="wrap-wide">
+        <figure class="figure">
+          <div class="plate">
+            <img
+              src={asset(overview.src)}
+              width={overview.width}
+              height={overview.height}
+              loading="lazy"
+              decoding="async"
+              alt="MakeSense overview: sensor adapters, a fusion core with per-sensor layers and bottleneck fusion, dataset heads, a range readout, and a world model on the frozen fused state."
+            />
+          </div>
+        </figure>
+      </div>
+      <div class="wrap">
+        <h3 class="subhead">Step through the pipeline on MM-Fi</h3>
+        <MethodStepper client:visible />
+      </div>
+    </section>
+
+    <section id="try" class="section band" aria-labelledby="try-title">
+      <div class="wrap">
+        <SectionHead id="try-title" eyebrow="Try it" title="Pick the sensors, watch the inference">
+          <p class="lead">Turn sensors on or off; the clip shows MakeSense with exactly those sensors.</p>
+        </SectionHead>
+        <SensorPicker client:visible />
+      </div>
+    </section>
+
+    <section id="results" class="section" aria-labelledby="results-title">
+      <div class="wrap">
+        <SectionHead id="results-title" title="One design, five datasets" />
+        {/* scroll targets for shared links such as #results-v2x; the tab itself is opened by DatasetTabs */}
+        {DATASETS.map((d) => <span id={`results-${d.id}`} class="anchor" aria-hidden="true"></span>)}
+        <DatasetTabs client:visible />
+      </div>
+    </section>
+
+    <section id="degrade" class="section band" aria-labelledby="degrade-title">
+      <div class="wrap">
+        <SectionHead id="degrade-title" title="Faulty sensors, side by side">
+          <p class="lead">Pick a fault and drag its strength: each clip shows the faulty input and the inference.</p>
+        </SectionHead>
+        {/* scroll targets for shared links such as #robustness-v2x; the tab itself is opened by DegradeViewer */}
+        {DATASETS.map((d) => <span id={`robustness-${d.id}`} class="anchor" aria-hidden="true"></span>)}
+        <DegradeViewer client:visible />
+      </div>
+    </section>
+
+    {/* World model: comes back as a render of the robot's forecast next moves (the line chart is off the page). */}
+
+    <section id="video" class="section" aria-labelledby="video-title">
+      <div class="wrap">
+        <SectionHead id="video-title" title="Two-minute overview" />
+        <p class="planned"><Icon name="circle-play" />Planned: the video, loaded only on click, with captions.</p>
+      </div>
+    </section>
+
+    <section id="bibtex" class="section band" aria-labelledby="bibtex-title">
+      <div class="wrap">
+        <SectionHead id="bibtex-title" title="BibTeX" />
+        <CopyBibtex bibtex={bibtex} />
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-brand"><SensorDots /><span translate="no">MakeSense</span></p>
+      <p>
+        We thank the authors of MM-Fi, V2X-Real, MMAUD, Humanoid-Everyday and RELI11D for their datasets, and the
+        authors of X-Fi, COMPASS and QuantV2X for their code.
+      </p>
+      <p>&lt;license of the page and contact, added at release&gt;</p>
+    </div>
+  </footer>
+</Base>

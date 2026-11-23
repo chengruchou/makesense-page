@@ -1,0 +1,310 @@
+{
+ "width": 1280,
+ "height": 720,
+ "datasets": [
+  {
+   "id": "mmfi",
+   "label": "MM-Fi",
+   "baseline": "X-Fi",
+   "clean": {
+    "src": "media/degrade/mmfi/clean.mp4",
+    "poster": "media/degrade/mmfi/clean.webp"
+   },
+   "faults": [
+    {
+     "id": "lidar_occlusion",
+     "label": "LiDAR occlusion",
+     "levels": [
+      {
+       "level": "0.3",
+       "src": "media/degrade/mmfi/lidar_occlusion_0.3.mp4",
+       "poster": "media/degrade/mmfi/lidar_occlusion_0.3.webp",
+       "note": "Faint grey points are the returns the fault removed. MakeSense was trained with such faults; this X-Fi was not (the paper also reports X-Fi with our degradation training)."
+      },
+      {
+       "level": "0.5",
+       "src": "media/degrade/mmfi/lidar_occlusion_0.5.mp4",
+       "poster": "media/degrade/mmfi/lidar_occlusion_0.5.webp",
+       "note": "Faint grey points are the returns the fault removed. MakeSense was trained with such faults; this X-Fi was not (the paper also reports X-Fi with our degradation training)."
+      },
+      {
+       "level": "0.7",
+       "src": "media/degrade/mmfi/lidar_occlusion_0.7.mp4",
+       "poster": "media/degrade/mmfi/lidar_occlusion_0.7.webp",
+       "note": "Faint grey points are the returns the fault removed. MakeSense was trained with such faults; this X-Fi was not (the paper also reports X-Fi with our degradation training)."
+      }
+     ]
+    },
+    {
+     "id": "lidar_thinning",
+     "label": "LiDAR thinning",
+     "levels": [
+      {
+       "level": "0.3",
+       "src": "media/degrade/mmfi/lidar_thinning_0.3.mp4",
+       "poster": "media/degrade/mmfi/lidar_thinning_0.3.webp",
+       "note": "Faint grey points are the returns the fault removed. MakeSense was trained with such faults; this X-Fi was not (the paper also reports X-Fi with our degradation training)."
+      },
+      {
+       "level": "0.5",
+       "src": "media/degrade/mmfi/lidar_thinning_0.5.mp4",
+       "poster": "media/degrade/mmfi/lidar_thinning_0.5.webp",
+       "note": "Faint grey points are the returns the fault removed. MakeSense was trained with such faults; this X-Fi was not (the paper also reports X-Fi with our degradation training)."
+      },
+      {
+       "level": "0.7",
+       "src": "media/degrade/mmfi/lidar_thinning_0.7.mp4",
+       "poster": "media/degrade/mmfi/lidar_thinning_0.7.webp",
+       "note": "Faint grey points are the returns the fault removed. MakeSense was trained with such faults; this X-Fi was not (the paper also reports X-Fi with our degradation training)."
+      }
+     ]
+    },
+    {
+     "id": "mmwave_occlusion",
+     "label": "mmWave occlusion",
+     "levels": [
+      {
+       "level": "0.3",
+       "src": "media/degrade/mmfi/mmwave_occlusion_0.3.mp4",
+       "poster": "media/degrade/mmfi/mmwave_occlusion_0.3.webp",
+       "note": "Faint grey points are the returns the fault removed. MakeSense was trained with such faults; this X-Fi was not (the paper also reports X-Fi with our degradation training)."
+      },
+      {
+       "level": "0.5",
+       "src": "media/degrade/mmfi/mmwave_occlusion_0.5.mp4",
+       "poster": "media/degrade/mmfi/mmwave_occlusion_0.5.webp",
+       "note": "Faint grey points are the returns the fault removed. MakeSense was trained with such faults; this X-Fi was not (the paper also reports X-Fi with our degradation training)."
+      },
+      {
+       "level": "0.7",
+       "src": "media/degrade/mmfi/mmwave_occlusion_0.7.mp4",
+       "poster": "media/degrade/mmfi/mmwave_occlusion_0.7.webp",
+       "note": "Faint grey points are the returns the fault removed. MakeSense was trained with such faults; this X-Fi was not (the paper also reports X-Fi with our degradation training)."
+      }
+     ]
+    },
+    {
+     "id": "mmwave_thinning",
+     "label": "mmWave thinning",
+     "levels": [
+      {
+       "level": "0.3",
+       "src": "media/degrade/mmfi/mmwave_thinning_0.3.mp4",
+       "poster": "media/degrade/mmfi/mmwave_thinning_0.3.webp",
+       "note": "Faint grey points are the returns the fault removed. MakeSense was trained with such faults; this X-Fi was not (the paper also reports X-Fi with our degradation training)."
+      },
+      {
+       "level": "0.5",
+       "src": "media/degrade/mmfi/mmwave_thinning_0.5.mp4",
+       "poster": "media/degrade/mmfi/mmwave_thinning_0.5.webp",
+       "note": "Faint grey points are the returns the fault removed. MakeSense was trained with such faults; this X-Fi was not (the paper also reports X-Fi with our degradation training)."
+      },
+      {
+       "level": "0.7",
+       "src": "media/degrade/mmfi/mmwave_thinning_0.7.mp4",
+       "poster": "media/degrade/mmfi/mmwave_thinning_0.7.webp",
+       "note": "Faint grey points are the returns the fault removed. MakeSense was trained with such faults; this X-Fi was not (the paper also reports X-Fi with our degradation training)."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "v2x",
+   "label": "V2X-Real",
+   "baseline": "Pyramid Fusion",
+   "clean": {
+    "src": "media/degrade/v2x/all_clean.mp4",
+    "poster": "media/degrade/v2x/all_clean.webp"
+   },
+   "faults": [
+    {
+     "id": "thin_all",
+     "label": "LiDAR thinning, all four nodes",
+     "levels": [
+      {
+       "level": "0.5",
+       "src": "media/degrade/v2x/all_thin_0.5.mp4",
+       "poster": "media/degrade/v2x/all_thin_0.5.webp",
+       "note": "Faint grey points are the LiDAR returns the fault removed."
+      }
+     ]
+    },
+    {
+     "id": "thin_ego",
+     "label": "LiDAR thinning, ego vehicle alone",
+     "levels": [
+      {
+       "level": "0.5",
+       "src": "media/degrade/v2x/ego_thin_0.5.mp4",
+       "poster": "media/degrade/v2x/ego_thin_0.5.webp",
+       "note": "Faint grey points are the LiDAR returns the fault removed."
+      }
+     ],
+     "clean": {
+      "src": "media/degrade/v2x/ego_clean.mp4",
+      "poster": "media/degrade/v2x/ego_clean.webp"
+     }
+    }
+   ]
+  },
+  {
+   "id": "mmaud",
+   "label": "MMAUD",
+   "baseline": "MakeSense without degradation training",
+   "clean": {
+    "src": "media/degrade/mmaud/clean.mp4",
+    "poster": "media/degrade/mmaud/clean.webp"
+   },
+   "faults": [
+    {
+     "id": "mid360_thinning",
+     "label": "Mid-360 thinning",
+     "levels": [
+      {
+       "level": "0.5",
+       "src": "media/degrade/mmaud/mid360_thinning_0.5.mp4",
+       "poster": "media/degrade/mmaud/mid360_thinning_0.5.webp"
+      }
+     ]
+    },
+    {
+     "id": "mid360_clutter",
+     "label": "Mid-360 clutter",
+     "levels": [
+      {
+       "level": "0.5",
+       "src": "media/degrade/mmaud/mid360_clutter_0.5.mp4",
+       "poster": "media/degrade/mmaud/mid360_clutter_0.5.webp",
+       "note": "Under clutter on the Mid-360 both models lose the drone; MakeSense stays closer to it."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "he",
+   "label": "Humanoid-Everyday",
+   "baseline": "ACT",
+   "clean": {
+    "src": "media/degrade/he/clean.mp4",
+    "poster": "media/degrade/he/clean.webp"
+   },
+   "faults": [
+    {
+     "id": "rgb_brightness",
+     "label": "RGB brightness",
+     "levels": [
+      {
+       "level": "0.5",
+       "src": "media/degrade/he/rgb_brightness_0.5.mp4",
+       "poster": "media/degrade/he/rgb_brightness_0.5.webp"
+      },
+      {
+       "level": "0.7",
+       "src": "media/degrade/he/rgb_brightness_0.7.mp4",
+       "poster": "media/degrade/he/rgb_brightness_0.7.webp"
+      }
+     ]
+    },
+    {
+     "id": "rgb_defocus",
+     "label": "RGB defocus blur",
+     "levels": [
+      {
+       "level": "0.5",
+       "src": "media/degrade/he/rgb_defocus_0.5.mp4",
+       "poster": "media/degrade/he/rgb_defocus_0.5.webp"
+      },
+      {
+       "level": "0.7",
+       "src": "media/degrade/he/rgb_defocus_0.7.mp4",
+       "poster": "media/degrade/he/rgb_defocus_0.7.webp"
+      }
+     ]
+    },
+    {
+     "id": "depth_frozen",
+     "label": "Depth frozen",
+     "levels": [
+      {
+       "level": "0.5",
+       "src": "media/degrade/he/depth_frozen_0.5.mp4",
+       "poster": "media/degrade/he/depth_frozen_0.5.webp",
+       "note": "ACT does not read depth, so its prediction stays the clean one. In this episode both strengths freeze the depth from the same moment, so the two clips match."
+      },
+      {
+       "level": "0.7",
+       "src": "media/degrade/he/depth_frozen_0.7.mp4",
+       "poster": "media/degrade/he/depth_frozen_0.7.webp",
+       "note": "ACT does not read depth, so its prediction stays the clean one. In this episode both strengths freeze the depth from the same moment, so the two clips match."
+      }
+     ]
+    },
+    {
+     "id": "proprio_offset",
+     "label": "Joint encoder offset",
+     "levels": [
+      {
+       "level": "0.5",
+       "src": "media/degrade/he/proprio_offset_0.5.mp4",
+       "poster": "media/degrade/he/proprio_offset_0.5.webp"
+      },
+      {
+       "level": "0.7",
+       "src": "media/degrade/he/proprio_offset_0.7.mp4",
+       "poster": "media/degrade/he/proprio_offset_0.7.webp"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reli",
+   "label": "RELI11D",
+   "baseline": null,
+   "cleanLabel": "all sensors",
+   "axisLabel": "Input",
+   "clean": {
+    "src": "media/degrade/reli/all.mp4",
+    "poster": "media/degrade/reli/all.webp"
+   },
+   "faults": [
+    {
+     "id": "no_lidar",
+     "label": "LiDAR missing",
+     "levels": [
+      {
+       "level": "missing",
+       "src": "media/degrade/reli/no_lidar.mp4",
+       "poster": "media/degrade/reli/no_lidar.webp",
+       "note": "Without LiDAR, MakeSense keeps the body pose but loses where the person stands: in this recording the skeleton sits about a metre away."
+      }
+     ]
+    },
+    {
+     "id": "no_event",
+     "label": "Event camera missing",
+     "levels": [
+      {
+       "level": "missing",
+       "src": "media/degrade/reli/no_event.mp4",
+       "poster": "media/degrade/reli/no_event.webp"
+      }
+     ]
+    },
+    {
+     "id": "no_rgb",
+     "label": "RGB missing",
+     "levels": [
+      {
+       "level": "missing",
+       "src": "media/degrade/reli/no_rgb.mp4",
+       "poster": "media/degrade/reli/no_rgb.webp"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

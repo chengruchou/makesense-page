@@ -1,0 +1,1201 @@
+{
+ "source": "Supplementary Table 'MPJPE (mm) of all 31 input subsets on MM-Fi (test)'; mean and SD over three seeds",
+ "metric": "MPJPE (mm), lower is better",
+ "models": [
+  "MakeSense",
+  "X-Fi",
+  "COMPASS",
+  "Late fusion"
+ ],
+ "splits": {
+  "id": "ID test",
+  "e04": "Unseen room (E04)"
+ },
+ "sensors": [
+  "rgb",
+  "depth",
+  "mmwave",
+  "lidar",
+  "wifi"
+ ],
+ "subsets": {
+  "rgb": {
+   "id": {
+    "MakeSense": [
+     97.4,
+     10.1
+    ],
+    "X-Fi": [
+     114.8,
+     8.1
+    ],
+    "COMPASS": [
+     111.6,
+     38.7
+    ],
+    "Late fusion": [
+     92.3,
+     4.5
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     242.4,
+     73.1
+    ],
+    "X-Fi": [
+     182.4,
+     11.1
+    ],
+    "COMPASS": [
+     242.8,
+     38.2
+    ],
+    "Late fusion": [
+     257.5,
+     26.6
+    ]
+   }
+  },
+  "depth": {
+   "id": {
+    "MakeSense": [
+     62.9,
+     0.5
+    ],
+    "X-Fi": [
+     95.1,
+     7.3
+    ],
+    "COMPASS": [
+     153.2,
+     122.9
+    ],
+    "Late fusion": [
+     89.1,
+     15.1
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     77.4,
+     1.4
+    ],
+    "X-Fi": [
+     129.1,
+     9.8
+    ],
+    "COMPASS": [
+     193.8,
+     97.5
+    ],
+    "Late fusion": [
+     117.8,
+     18.2
+    ]
+   }
+  },
+  "mmwave": {
+   "id": {
+    "MakeSense": [
+     102.2,
+     1.2
+    ],
+    "X-Fi": [
+     136.3,
+     4.2
+    ],
+    "COMPASS": [
+     149.4,
+     51.1
+    ],
+    "Late fusion": [
+     124.7,
+     7.0
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     168.6,
+     0.9
+    ],
+    "X-Fi": [
+     214.2,
+     15.7
+    ],
+    "COMPASS": [
+     218.5,
+     56.0
+    ],
+    "Late fusion": [
+     183.7,
+     2.1
+    ]
+   }
+  },
+  "lidar": {
+   "id": {
+    "MakeSense": [
+     69.3,
+     0.5
+    ],
+    "X-Fi": [
+     100.6,
+     9.0
+    ],
+    "COMPASS": [
+     115.8,
+     67.9
+    ],
+    "Late fusion": [
+     79.8,
+     2.4
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     116.2,
+     23.8
+    ],
+    "X-Fi": [
+     131.2,
+     9.2
+    ],
+    "COMPASS": [
+     164.0,
+     67.2
+    ],
+    "Late fusion": [
+     118.3,
+     17.0
+    ]
+   }
+  },
+  "wifi": {
+   "id": {
+    "MakeSense": [
+     195.3,
+     3.7
+    ],
+    "X-Fi": [
+     203.2,
+     4.0
+    ],
+    "COMPASS": [
+     218.1,
+     16.1
+    ],
+    "Late fusion": [
+     194.8,
+     2.4
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     367.9,
+     17.6
+    ],
+    "X-Fi": [
+     337.0,
+     4.1
+    ],
+    "COMPASS": [
+     366.3,
+     49.9
+    ],
+    "Late fusion": [
+     360.6,
+     20.8
+    ]
+   }
+  },
+  "rgb+depth": {
+   "id": {
+    "MakeSense": [
+     60.8,
+     0.9
+    ],
+    "X-Fi": [
+     88.8,
+     4.3
+    ],
+    "COMPASS": [
+     87.4,
+     16.0
+    ],
+    "Late fusion": [
+     77.6,
+     3.4
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     82.8,
+     1.2
+    ],
+    "X-Fi": [
+     128.3,
+     7.3
+    ],
+    "COMPASS": [
+     183.1,
+     28.2
+    ],
+    "Late fusion": [
+     171.6,
+     4.1
+    ]
+   }
+  },
+  "rgb+mmwave": {
+   "id": {
+    "MakeSense": [
+     77.1,
+     3.2
+    ],
+    "X-Fi": [
+     100.5,
+     0.2
+    ],
+    "COMPASS": [
+     94.4,
+     15.2
+    ],
+    "Late fusion": [
+     94.1,
+     5.9
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     136.7,
+     1.9
+    ],
+    "X-Fi": [
+     163.7,
+     12.3
+    ],
+    "COMPASS": [
+     210.1,
+     3.6
+    ],
+    "Late fusion": [
+     197.0,
+     15.0
+    ]
+   }
+  },
+  "rgb+lidar": {
+   "id": {
+    "MakeSense": [
+     69.7,
+     3.2
+    ],
+    "X-Fi": [
+     86.9,
+     2.6
+    ],
+    "COMPASS": [
+     87.0,
+     16.5
+    ],
+    "Late fusion": [
+     79.1,
+     3.4
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     116.0,
+     9.3
+    ],
+    "X-Fi": [
+     140.1,
+     18.1
+    ],
+    "COMPASS": [
+     173.5,
+     9.6
+    ],
+    "Late fusion": [
+     173.2,
+     15.2
+    ]
+   }
+  },
+  "rgb+wifi": {
+   "id": {
+    "MakeSense": [
+     95.7,
+     10.4
+    ],
+    "X-Fi": [
+     109.5,
+     5.0
+    ],
+    "COMPASS": [
+     106.2,
+     27.6
+    ],
+    "Late fusion": [
+     127.9,
+     1.9
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     239.2,
+     65.2
+    ],
+    "X-Fi": [
+     192.7,
+     11.6
+    ],
+    "COMPASS": [
+     257.0,
+     57.2
+    ],
+    "Late fusion": [
+     296.6,
+     22.4
+    ]
+   }
+  },
+  "depth+mmwave": {
+   "id": {
+    "MakeSense": [
+     60.5,
+     0.7
+    ],
+    "X-Fi": [
+     91.8,
+     4.6
+    ],
+    "COMPASS": [
+     103.4,
+     43.0
+    ],
+    "Late fusion": [
+     88.0,
+     1.4
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     76.3,
+     1.6
+    ],
+    "X-Fi": [
+     127.3,
+     15.2
+    ],
+    "COMPASS": [
+     152.3,
+     36.5
+    ],
+    "Late fusion": [
+     133.4,
+     6.9
+    ]
+   }
+  },
+  "depth+lidar": {
+   "id": {
+    "MakeSense": [
+     60.8,
+     0.3
+    ],
+    "X-Fi": [
+     81.9,
+     4.7
+    ],
+    "COMPASS": [
+     95.8,
+     42.5
+    ],
+    "Late fusion": [
+     70.3,
+     2.7
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     75.8,
+     1.6
+    ],
+    "X-Fi": [
+     116.6,
+     15.4
+    ],
+    "COMPASS": [
+     139.3,
+     31.8
+    ],
+    "Late fusion": [
+     107.1,
+     11.6
+    ]
+   }
+  },
+  "depth+wifi": {
+   "id": {
+    "MakeSense": [
+     62.6,
+     0.4
+    ],
+    "X-Fi": [
+     97.6,
+     7.2
+    ],
+    "COMPASS": [
+     107.9,
+     44.0
+    ],
+    "Late fusion": [
+     122.1,
+     3.3
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     79.3,
+     1.6
+    ],
+    "X-Fi": [
+     162.1,
+     20.2
+    ],
+    "COMPASS": [
+     174.5,
+     53.4
+    ],
+    "Late fusion": [
+     222.2,
+     6.6
+    ]
+   }
+  },
+  "mmwave+lidar": {
+   "id": {
+    "MakeSense": [
+     66.0,
+     0.3
+    ],
+    "X-Fi": [
+     93.0,
+     3.6
+    ],
+    "COMPASS": [
+     88.0,
+     24.7
+    ],
+    "Late fusion": [
+     88.4,
+     4.9
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     109.4,
+     16.6
+    ],
+    "X-Fi": [
+     135.0,
+     7.9
+    ],
+    "COMPASS": [
+     144.1,
+     38.9
+    ],
+    "Late fusion": [
+     134.9,
+     7.2
+    ]
+   }
+  },
+  "mmwave+wifi": {
+   "id": {
+    "MakeSense": [
+     101.6,
+     0.7
+    ],
+    "X-Fi": [
+     142.2,
+     0.8
+    ],
+    "COMPASS": [
+     143.7,
+     24.2
+    ],
+    "Late fusion": [
+     135.8,
+     2.0
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     196.2,
+     5.8
+    ],
+    "X-Fi": [
+     241.6,
+     24.8
+    ],
+    "COMPASS": [
+     239.5,
+     44.5
+    ],
+    "Late fusion": [
+     245.3,
+     12.8
+    ]
+   }
+  },
+  "lidar+wifi": {
+   "id": {
+    "MakeSense": [
+     69.4,
+     0.4
+    ],
+    "X-Fi": [
+     93.7,
+     1.8
+    ],
+    "COMPASS": [
+     97.2,
+     32.1
+    ],
+    "Late fusion": [
+     118.6,
+     2.0
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     115.0,
+     21.0
+    ],
+    "X-Fi": [
+     154.7,
+     14.8
+    ],
+    "COMPASS": [
+     157.4,
+     45.9
+    ],
+    "Late fusion": [
+     222.0,
+     18.2
+    ]
+   }
+  },
+  "rgb+depth+mmwave": {
+   "id": {
+    "MakeSense": [
+     58.9,
+     1.3
+    ],
+    "X-Fi": [
+     88.5,
+     3.6
+    ],
+    "COMPASS": [
+     82.7,
+     11.1
+    ],
+    "Late fusion": [
+     80.4,
+     1.7
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     81.0,
+     0.9
+    ],
+    "X-Fi": [
+     126.7,
+     4.7
+    ],
+    "COMPASS": [
+     169.4,
+     16.3
+    ],
+    "Late fusion": [
+     159.8,
+     4.1
+    ]
+   }
+  },
+  "rgb+depth+lidar": {
+   "id": {
+    "MakeSense": [
+     60.1,
+     1.2
+    ],
+    "X-Fi": [
+     81.5,
+     3.1
+    ],
+    "COMPASS": [
+     79.8,
+     11.2
+    ],
+    "Late fusion": [
+     71.4,
+     0.3
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     81.1,
+     1.0
+    ],
+    "X-Fi": [
+     127.0,
+     14.9
+    ],
+    "COMPASS": [
+     151.0,
+     11.7
+    ],
+    "Late fusion": [
+     145.1,
+     8.1
+    ]
+   }
+  },
+  "rgb+depth+wifi": {
+   "id": {
+    "MakeSense": [
+     60.6,
+     0.9
+    ],
+    "X-Fi": [
+     87.9,
+     5.0
+    ],
+    "COMPASS": [
+     88.6,
+     15.8
+    ],
+    "Late fusion": [
+     102.1,
+     1.8
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     83.5,
+     1.1
+    ],
+    "X-Fi": [
+     146.6,
+     1.6
+    ],
+    "COMPASS": [
+     188.4,
+     29.5
+    ],
+    "Late fusion": [
+     225.2,
+     10.3
+    ]
+   }
+  },
+  "rgb+mmwave+lidar": {
+   "id": {
+    "MakeSense": [
+     67.8,
+     3.6
+    ],
+    "X-Fi": [
+     85.4,
+     1.8
+    ],
+    "COMPASS": [
+     81.5,
+     9.8
+    ],
+    "Late fusion": [
+     82.4,
+     4.8
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     111.2,
+     7.7
+    ],
+    "X-Fi": [
+     140.8,
+     19.6
+    ],
+    "COMPASS": [
+     161.7,
+     4.6
+    ],
+    "Late fusion": [
+     161.1,
+     11.2
+    ]
+   }
+  },
+  "rgb+mmwave+wifi": {
+   "id": {
+    "MakeSense": [
+     76.7,
+     3.5
+    ],
+    "X-Fi": [
+     100.9,
+     2.9
+    ],
+    "COMPASS": [
+     97.0,
+     17.7
+    ],
+    "Late fusion": [
+     111.6,
+     3.0
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     139.0,
+     2.8
+    ],
+    "X-Fi": [
+     177.1,
+     20.5
+    ],
+    "COMPASS": [
+     224.2,
+     21.2
+    ],
+    "Late fusion": [
+     239.9,
+     17.0
+    ]
+   }
+  },
+  "rgb+lidar+wifi": {
+   "id": {
+    "MakeSense": [
+     69.5,
+     3.2
+    ],
+    "X-Fi": [
+     88.2,
+     2.7
+    ],
+    "COMPASS": [
+     89.5,
+     18.6
+    ],
+    "Late fusion": [
+     102.0,
+     1.1
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     116.7,
+     9.1
+    ],
+    "X-Fi": [
+     152.7,
+     15.8
+    ],
+    "COMPASS": [
+     184.6,
+     20.6
+    ],
+    "Late fusion": [
+     225.7,
+     17.7
+    ]
+   }
+  },
+  "depth+mmwave+lidar": {
+   "id": {
+    "MakeSense": [
+     59.0,
+     0.5
+    ],
+    "X-Fi": [
+     80.7,
+     7.4
+    ],
+    "COMPASS": [
+     78.6,
+     15.1
+    ],
+    "Late fusion": [
+     75.9,
+     1.3
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     74.8,
+     2.0
+    ],
+    "X-Fi": [
+     119.1,
+     11.8
+    ],
+    "COMPASS": [
+     125.1,
+     14.5
+    ],
+    "Late fusion": [
+     119.3,
+     6.8
+    ]
+   }
+  },
+  "depth+mmwave+wifi": {
+   "id": {
+    "MakeSense": [
+     60.3,
+     0.6
+    ],
+    "X-Fi": [
+     93.6,
+     5.1
+    ],
+    "COMPASS": [
+     99.7,
+     35.5
+    ],
+    "Late fusion": [
+     106.5,
+     1.0
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     77.9,
+     1.8
+    ],
+    "X-Fi": [
+     145.0,
+     7.7
+    ],
+    "COMPASS": [
+     162.3,
+     43.8
+    ],
+    "Late fusion": [
+     191.8,
+     4.4
+    ]
+   }
+  },
+  "depth+lidar+wifi": {
+   "id": {
+    "MakeSense": [
+     60.6,
+     0.3
+    ],
+    "X-Fi": [
+     81.2,
+     6.1
+    ],
+    "COMPASS": [
+     82.2,
+     17.0
+    ],
+    "Late fusion": [
+     95.9,
+     1.5
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     76.4,
+     1.8
+    ],
+    "X-Fi": [
+     129.9,
+     15.9
+    ],
+    "COMPASS": [
+     136.8,
+     20.2
+    ],
+    "Late fusion": [
+     177.1,
+     11.8
+    ]
+   }
+  },
+  "mmwave+lidar+wifi": {
+   "id": {
+    "MakeSense": [
+     65.9,
+     0.3
+    ],
+    "X-Fi": [
+     89.4,
+     4.7
+    ],
+    "COMPASS": [
+     88.6,
+     22.6
+    ],
+    "Late fusion": [
+     105.9,
+     2.3
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     108.7,
+     14.7
+    ],
+    "X-Fi": [
+     156.7,
+     20.3
+    ],
+    "COMPASS": [
+     153.2,
+     46.4
+    ],
+    "Late fusion": [
+     192.2,
+     12.3
+    ]
+   }
+  },
+  "rgb+depth+mmwave+lidar": {
+   "id": {
+    "MakeSense": [
+     58.6,
+     1.5
+    ],
+    "X-Fi": [
+     80.4,
+     5.2
+    ],
+    "COMPASS": [
+     77.9,
+     9.0
+    ],
+    "Late fusion": [
+     74.5,
+     2.2
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     79.7,
+     0.8
+    ],
+    "X-Fi": [
+     127.4,
+     14.5
+    ],
+    "COMPASS": [
+     141.9,
+     5.4
+    ],
+    "Late fusion": [
+     142.8,
+     6.2
+    ]
+   }
+  },
+  "rgb+depth+mmwave+wifi": {
+   "id": {
+    "MakeSense": [
+     58.8,
+     1.3
+    ],
+    "X-Fi": [
+     87.9,
+     2.2
+    ],
+    "COMPASS": [
+     85.0,
+     12.3
+    ],
+    "Late fusion": [
+     95.9,
+     1.5
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     81.8,
+     0.8
+    ],
+    "X-Fi": [
+     141.4,
+     10.8
+    ],
+    "COMPASS": [
+     175.8,
+     19.4
+    ],
+    "Late fusion": [
+     200.9,
+     8.9
+    ]
+   }
+  },
+  "rgb+depth+lidar+wifi": {
+   "id": {
+    "MakeSense": [
+     59.9,
+     1.1
+    ],
+    "X-Fi": [
+     81.5,
+     5.6
+    ],
+    "COMPASS": [
+     81.7,
+     11.7
+    ],
+    "Late fusion": [
+     89.1,
+     0.5
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     81.5,
+     0.9
+    ],
+    "X-Fi": [
+     138.7,
+     14.5
+    ],
+    "COMPASS": [
+     157.6,
+     15.2
+    ],
+    "Late fusion": [
+     190.5,
+     11.4
+    ]
+   }
+  },
+  "rgb+mmwave+lidar+wifi": {
+   "id": {
+    "MakeSense": [
+     67.5,
+     3.6
+    ],
+    "X-Fi": [
+     88.3,
+     4.2
+    ],
+    "COMPASS": [
+     85.2,
+     13.8
+    ],
+    "Late fusion": [
+     96.5,
+     2.6
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     111.9,
+     7.6
+    ],
+    "X-Fi": [
+     158.0,
+     22.7
+    ],
+    "COMPASS": [
+     172.9,
+     12.0
+    ],
+    "Late fusion": [
+     201.5,
+     14.3
+    ]
+   }
+  },
+  "depth+mmwave+lidar+wifi": {
+   "id": {
+    "MakeSense": [
+     58.8,
+     0.5
+    ],
+    "X-Fi": [
+     82.2,
+     5.9
+    ],
+    "COMPASS": [
+     79.5,
+     14.3
+    ],
+    "Late fusion": [
+     91.6,
+     1.2
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     75.4,
+     2.2
+    ],
+    "X-Fi": [
+     138.6,
+     14.1
+    ],
+    "COMPASS": [
+     135.2,
+     24.7
+    ],
+    "Late fusion": [
+     166.0,
+     8.2
+    ]
+   }
+  },
+  "rgb+depth+mmwave+lidar+wifi": {
+   "id": {
+    "MakeSense": [
+     58.4,
+     1.4
+    ],
+    "X-Fi": [
+     82.1,
+     4.8
+    ],
+    "COMPASS": [
+     80.5,
+     10.2
+    ],
+    "Late fusion": [
+     87.0,
+     1.4
+    ]
+   },
+   "e04": {
+    "MakeSense": [
+     80.2,
+     0.7
+    ],
+    "X-Fi": [
+     133.7,
+     18.4
+    ],
+    "COMPASS": [
+     149.2,
+     9.4
+    ],
+    "Late fusion": [
+     178.4,
+     9.5
+    ]
+   }
+  }
+ }
+}

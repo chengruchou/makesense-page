@@ -1,0 +1,11 @@
+---
+// The paper's glyph for a sensor subset, here with all five MM-Fi sensors present (RGB, depth, mmWave, LiDAR,
+// WiFi CSI in the legend colours). It is the page's recurring mark, so it is hidden from assistive technology.
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<span class:list={["sensor-dots", className]} aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>

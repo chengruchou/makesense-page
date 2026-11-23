@@ -1,0 +1,101 @@
+---
+// A silent looping clip on a white plate, with its own play / pause button (WCAG 2.2.2) over the clip.
+import media from "../data/media.json";
+import { asset } from "../lib/paths";
+import Icon from "./Icon.astro";
+
+interface Props {
+  name: keyof typeof media;
+  label: string;
+}
+
+const { name, label } = Astro.props;
+const item = media[name] as {
+  sources: { src: string; type: string }[];
+  poster: string;
+  width: number;
+  height: number;
+};
+---
+
+<figure class="loop-video">
+  <div class="plate">
+    <video
+      data-loop
+      muted
+      loop
+      playsinline
+      preload="none"
+      poster={asset(item.poster)}
+      width={item.width}
+      height={item.height}
+      style={`aspect-ratio: ${item.width} / ${item.height}`}
+      aria-label={label}
+    >
+      {item.sources.map((s) => <source src={asset(s.src)} type={s.type} />)}
+    </video>
+    <button type="button" class="video-toggle" data-video-toggle data-state="paused" aria-label={`Play: ${label}`}>
+      <Icon name="play" class="icon-play" />
+      <Icon name="pause" class="icon-pause" />
+    </button>
+  </div>
+  {Astro.slots.has("default") && <figcaption><slot /></figcaption>}
+</figure>
+
+<script>
+  // One observer for every loop: play only while on screen, at most three at once, never with reduced motion,
+  // and never again after the viewer paused it.
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const MAX_PLAYING = 3;
+  const playing = new Set<HTMLVideoElement>();
+  const pausedByUser = new WeakSet<HTMLVideoElement>();
+
+  function sync(video: HTMLVideoElement, button: HTMLButtonElement | null) {
+    if (!button) return;
+    const label = video.getAttribute("aria-label") ?? "video";
+    button.dataset.state = video.paused ? "paused" : "playing";
+    button.setAttribute("aria-label", `${video.paused ? "Play" : "Pause"}: ${label}`);
+  }
+
+  function start(video: HTMLVideoElement) {
+    if (reduce.matches || pausedByUser.has(video)) return;
+    if (playing.size >= MAX_PLAYING) {
+      const oldest = playing.values().next().value;
+      oldest?.pause();
+    }
+    video.play().catch(() => {});
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        const video = entry.target as HTMLVideoElement;
+        if (entry.isIntersecting) start(video);
+        else video.pause();
+      }
+    },
+    { rootMargin: "200px 0px", threshold: 0.25 },
+  );
+
+  for (const video of document.querySelectorAll<HTMLVideoElement>("video[data-loop]")) {
+    const button = video.parentElement?.querySelector<HTMLButtonElement>("[data-video-toggle]") ?? null;
+    video.addEventListener("play", () => {
+      playing.add(video);
+      sync(video, button);
+    });
+    video.addEventListener("pause", () => {
+      playing.delete(video);
+      sync(video, button);
+    });
+    button?.addEventListener("click", () => {
+      if (video.paused) {
+        pausedByUser.delete(video);
+        video.play().catch(() => {});
+      } else {
+        pausedByUser.add(video);
+        video.pause();
+      }
+    });
+    observer.observe(video);
+  }
+</script>

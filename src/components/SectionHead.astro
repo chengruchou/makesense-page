@@ -1,0 +1,22 @@
+---
+// A section heading: the sensor mark, an optional eyebrow (the page keeps two), the h2 and its lead paragraph.
+import SensorDots from "./SensorDots.astro";
+
+interface Props {
+  /** id of the h2, which the section names with aria-labelledby */
+  id: string;
+  title: string;
+  eyebrow?: string;
+}
+
+const { id, title, eyebrow } = Astro.props;
+---
+
+<header class="section-head">
+  <div class="mark">
+    <SensorDots />
+    {eyebrow ? <p class="eyebrow">{eyebrow}</p> : null}
+  </div>
+  <h2 id={id}>{title}</h2>
+  <slot />
+</header>
