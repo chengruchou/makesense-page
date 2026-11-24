@@ -14,17 +14,53 @@ import subsets from "../data/subsets.json";
 import { DATASETS } from "../data/datasets";
 import { asset } from "../lib/paths";
 
-// Prototype. Placeholders <...> are filled at release; no venue name before the decision is public.
+// Authors, affiliations, the Paper link and the BibTeX follow the arXiv version (v1); the footer placeholder <...> is
+// filled at release. No venue name before the decision is public.
+const ARXIV = "https://arxiv.org/abs/2611.30836";
+// [name, mark, affiliations] as in the paper's author block: * equal contribution, † corresponding authors
+const AUTHORS: [string, string, number[]][] = [
+  ["Cheng-Ru Chou", "*", [1]],
+  ["Shih-Yu Lai", "*", [2, 3, 4]],
+  ["Pei-Lin Chiang", "", [1]],
+  ["Shou-Po Tsai", "", [1]],
+  ["Jing-Zhe Huang", "", [1]],
+  ["Fukuharu Tanaka", "", [4, 5]],
+  ["Hirozumi Yamaguchi", "†", [4, 5]],
+  ["Bing-Yu Chen", "†", [2]],
+  ["Yu-Lun Liu", "†", [6]],
+  ["Hsun-Ping Hsieh", "†", [1]],
+];
+const AFFILIATIONS = [
+  "National Cheng Kung University",
+  "National Taiwan University",
+  "MoonShine Animation Studio",
+  "RIKEN Center for Computational Science",
+  "The University of Osaka",
+  "National Yang Ming Chiao Tung University",
+];
+const authorSup = ([, mark, aff]: [string, string, number[]]) => [mark, ...aff].filter(Boolean).join(",");
 const title = "MakeSense: multimodal fusion for embodied vision in degraded sensing";
 const description =
   "One fusion design for missing and degraded sensors, tested on 3D human pose, cooperative 3D detection, " +
   "UAV localization, humanoid command prediction and few-shot pose transfer.";
-const bibtex = `@article{<key>,
-  title   = {Can Multimodal Fusion MakeSense for Embodied Vision in Degraded Sensing?},
-  author  = {<authors>},
-  journal = {arXiv preprint arXiv:<id>},
-  year    = {<year>}
+// arXiv's export with {MakeSense} braced, so styles that lowercase titles keep its capitals (trailing spaces removed)
+const bibtex = `@misc{chou2026multimodalfusionmakesenseembodied,
+      title={Can Multimodal Fusion {MakeSense} for Embodied Vision in Degraded Sensing?},
+      author={Cheng-Ru Chou and Shih-Yu Lai and Pei-Lin Chiang and Shou-Po Tsai and Jing-Zhe Huang and Fukuharu Tanaka and Hirozumi Yamaguchi and Bing-Yu Chen and Yu-Lun Liu and Hsun-Ping Hsieh},
+      year={2026},
+      eprint={2611.30836},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2611.30836},
 }`;
+const names = AUTHORS.map(([name]) => name);
+const used = new Set(AUTHORS.flatMap(([, , aff]) => aff));
+if (names.join(" and ") !== bibtex.match(/author=\{([^}]*)\}/)?.[1] || !bibtex.includes(`url={${ARXIV}}`)) {
+  throw new Error("The author line or the Paper link no longer matches the BibTeX.");
+}
+if (used.size !== AFFILIATIONS.length || [...used].some((n) => n < 1 || n > AFFILIATIONS.length)) {
+  throw new Error("Every affiliation must be used by an author, and every author number must exist.");
+}
 const overview = { src: "media/overview.webp", width: 1800, height: 622 };
 
 const NAV = [
@@ -62,9 +98,19 @@ const increase = (v: number) => `+${v.toFixed(1)}${NBSP}%`;
   <header class="hero" id="top">
     <div class="wrap">
       <h1>Can Multimodal Fusion <span class="brand" translate="no">MakeSense</span> for Embodied Vision in Degraded Sensing?</h1>
-      <p class="authors">&lt;authors and affiliations, added at release&gt;</p>
+      <p class="authors" translate="no">
+        {AUTHORS.map((a, i) => (
+          <Fragment>
+            <span class="author">{a[0]}<sup>{authorSup(a)}</sup></span>{i < AUTHORS.length - 1 ? ", " : ""}
+          </Fragment>
+        ))}
+      </p>
+      <ul class="affiliations" translate="no" aria-label="Affiliations">
+        {AFFILIATIONS.map((name, i) => <li><sup>{i + 1}</sup>{name}</li>)}
+      </ul>
+      <p class="author-notes"><sup>*</sup>Equal contribution <sup>†</sup>Corresponding authors and advisors</p>
       <ul class="pills" aria-label="Links">
-        <li><span class="pill" aria-disabled="true"><Icon name="file-text" />Paper</span></li>
+        <li><a class="pill" href={ARXIV}><Icon name="file-text" />Paper</a></li>
         <li><span class="pill" aria-disabled="true"><Icon name="code-xml" />Code</span></li>
         <li><span class="pill" aria-disabled="true"><Icon name="package" />Checkpoints</span></li>
         <li><a class="pill" href="#video"><Icon name="circle-play" />Video</a></li>
